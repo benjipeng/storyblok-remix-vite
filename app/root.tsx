@@ -6,13 +6,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import "./tailwind.css";
-
 import { storyblokInit, apiPlugin } from "@storyblok/react";
-
-storyblokInit({
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
-  use: [apiPlugin],
-});
 
 import Feature from "./components/Feature";
 import Grid from "./components/Grid";
@@ -25,8 +19,14 @@ const components = {
   teaser: Teaser,
   page: Page,
 };
-storyblokInit({
+
+const apiOptions = {
   accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+  region: "us",
+};
+
+storyblokInit({
+  apiOptions,
   use: [apiPlugin],
   components,
 });
