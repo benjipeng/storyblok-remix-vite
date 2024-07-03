@@ -5,3 +5,6 @@ node_modules
 /.cache
 /build
 .env
+.env.local
+
+*.pem
