@@ -14,9 +14,7 @@ import Page from "./components/Page";
 import Teaser from "./components/Teaser";
 import Layout from "./components/Layout";
 
-import stylesheet from "./tailwind.css";
-
-export const links = () => [{ rel: "stylesheet", href: stylesheet }];
+export const links = () => [{ rel: "stylesheet", href: "./tailwind.css" }];
 
 const components = {
   feature: Feature,
