@@ -1,40 +1,17 @@
-# Welcome to Remix!
+# StoryBlok and Remix!
 
-- 📖 [Remix docs](https://remix.run/docs)
+## Local Development
 
-## Development
+> `MacOS` requires installing `mkcert` for **creating** a _valid_ certificate and Install localhost with `mkcert`
 
-Run the dev server:
-
-```shellscript
-npm run dev
+```bash
+brew install mkcert
+brew install nss # Network Security Services for FireFox
+mkcert -install
+mkcert localhost
 ```
 
-## Deployment
+After that
 
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+1. `npm install -g local-ssl-proxy` Installing the _actual_ proxy
+2. `local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem` Run the proxy to target port 3000, can change that into any ports but this is what the app is running in this development.
