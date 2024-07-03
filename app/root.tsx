@@ -1,17 +1,22 @@
 import {
   Links,
+  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import "./tailwind.css";
-import { storyblokInit, apiPlugin } from "@storyblok/react";
 
+import { storyblokInit, apiPlugin } from "@storyblok/react";
 import Feature from "./components/Feature";
 import Grid from "./components/Grid";
 import Page from "./components/Page";
 import Teaser from "./components/Teaser";
+import Layout from "./components/Layout";
+
+import stylesheet from "./tailwind.css";
+
+export const links = () => [{ rel: "stylesheet", href: stylesheet }];
 
 const components = {
   feature: Feature,
@@ -31,7 +36,7 @@ storyblokInit({
   components,
 });
 
-export function Layout({ children }: { children: React.ReactNode }) {
+const App = () => {
   return (
     <html lang="en">
       <head>
@@ -41,14 +46,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
-        <ScrollRestoration />
-        <Scripts />
+        <Layout>
+          <Outlet />
+          <ScrollRestoration />
+          <Scripts />
+          <LiveReload />
+        </Layout>
       </body>
     </html>
   );
-}
+};
 
-export default function App() {
-  return <Outlet />;
-}
+export default App;

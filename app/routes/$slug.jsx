@@ -22,7 +22,7 @@ export const loader = async ({ params }) => {
     });
 
   if (!data) {
-    throw new Response("Not Found", { status: 401 });
+    throw new Response("Not Found", { status: 404 });
   }
 
   return json({ story: data?.story });
